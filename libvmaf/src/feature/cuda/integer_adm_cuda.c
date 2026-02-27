@@ -30,7 +30,9 @@
 #include "cpu.h"
 #include "cuda/integer_adm_cuda.h"
 #include "picture_cuda.h"
+#ifndef _WIN32
 #include <unistd.h>
+#endif
 
 #include <assert.h>
 

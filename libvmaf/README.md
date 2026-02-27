@@ -1,5 +1,29 @@
 # `libvmaf`
 
+## Prerequisites (Windows cuda support)
+1. Visual Studio Build Tools 2022: Install with the "Desktop development with C++" workload, Windows 11 SDK and MSVC v143.
+1. NVIDIA CUDA Toolkit: Download and install the latest version.
+1. Install Python latest
+
+1. Use `x64 Native Tools Command Prompt for VS 2022`
+1. run `pip install meson ninja`
+1. run `winget install NASM`
+1. git clone [https://git.ffmpeg.org/nv-codec-headers.git](https://git.ffmpeg.org/nv-codec-headers.git)
+1. add env vars `set INCLUDE=%INCLUDE%;C:\path\to\nv-codec-headers\include`
+1. git clone [https://github.com/microsoft/vcpkg.git](https://github.com/microsoft/vcpkg.git)
+1. run `bootstrap-vcpkg.bat`
+1. run `vcpkg install pthreads:x64-windows`
+1. add env vars `set INCLUDE=%INCLUDE%;C:\path\to\vcpkg\installed\x64-windows\include`
+1. add env vars `set LIB=%LIB%;C:\path\to\vcpkg\installed\x64-windows\lib`
+
+Build with
+```
+meson setup build --buildtype release -Denable_cuda=true -Denable_tests=false -Dc_args="/experimental:c11atomics"
+ninja -C build tools/vmaf.exe
+```
+
+NOTE: Copy `pthreadVC3.dll` from `C:\path\to\vcpkg\installed\x64-windows\bin`
+
 ## Prerequisites
 
 For building, you need the following:

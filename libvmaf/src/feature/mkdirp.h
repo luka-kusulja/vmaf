@@ -1,4 +1,3 @@
-
 //
 // mkdirp.h
 //
@@ -11,6 +10,10 @@
 
 #include <sys/types.h>
 #include <sys/stat.h>
+
+#ifdef _WIN32
+typedef int mode_t;
+#endif
 
 /*
  * Recursively `mkdir(path, mode)`

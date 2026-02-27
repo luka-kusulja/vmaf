@@ -18,6 +18,9 @@
 
 #include <errno.h>
 #include <pthread.h>
+#ifdef _MSC_VER
+#pragma comment(lib, "pthreadVC3.lib")
+#endif
 #include <stdbool.h>
 #include <stdlib.h>
 #include <string.h>

@@ -1,7 +1,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#ifndef _WIN32
 #include <unistd.h>
+#else
+#include <io.h>
+#define STDIN_FILENO 0
+#endif
 
 #include "cli_parse.h"
 #include "spinner.h"
@@ -274,7 +279,7 @@ int main(int argc, char *argv[])
     model_collection = malloc(model_sz);
     memset(model_collection, 0, model_collection_sz);
 
-    const char *model_collection_label[c.model_cnt];
+    const char *model_collection_label[256];
     unsigned model_collection_cnt = 0;
 
     for (unsigned i = 0; i < c.model_cnt; i++) {

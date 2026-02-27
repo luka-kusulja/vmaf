@@ -39,7 +39,7 @@
 
 #include <windows.h>
 
-#include "common/attributes.h"
+#define ALIGN_8(type, name) type name
 
 typedef volatile LONG  __declspec(align(32)) atomic_int;
 typedef volatile ULONG __declspec(align(32)) atomic_uint;

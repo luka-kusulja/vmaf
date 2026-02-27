@@ -34,6 +34,8 @@
 #include "cuda/common.h"
 #endif
 
+#include <pthread.h>
+
 enum VmafFeatureExtractorFlags {
     VMAF_FEATURE_EXTRACTOR_TEMPORAL = 1 << 0,
     VMAF_FEATURE_EXTRACTOR_CUDA = 1 << 1,

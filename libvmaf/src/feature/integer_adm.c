@@ -31,6 +31,15 @@
 #include <arm_neon.h>
 #endif
 
+#ifdef _MSC_VER
+#include <intrin.h>
+static inline int __builtin_clz(unsigned int x) {
+    unsigned long r = 0;
+    _BitScanReverse(&r, x);
+    return 31 - r;
+}
+#endif
+
 typedef struct AdmState {
     size_t integer_stride;
     AdmBuffer buf;

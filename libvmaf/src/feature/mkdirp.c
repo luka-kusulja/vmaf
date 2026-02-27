@@ -6,7 +6,13 @@
 // MIT licensed
 //
 
+#ifndef _WIN32
 #include <unistd.h>
+#else
+#include <io.h>
+#include <direct.h>
+#define mkdir(path, ...) _mkdir(path)
+#endif
 #include <errno.h>
 #include <stdlib.h>
 #include <string.h>

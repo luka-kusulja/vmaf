@@ -358,7 +358,7 @@ static int vmaf_bootstrap_predict_score_at_index(
                                         VmafModelCollectionScore *score)
 {
     int err = 0;
-    double scores[model_collection->cnt];
+    double scores[256];
 
     for (unsigned i = 0; i < model_collection->cnt; i++) {
         // mean, stddev, etc. are calculated on untransformed/unclipped scores
@@ -424,7 +424,7 @@ static int vmaf_bootstrap_predict_score_at_index(
     const char *suffix_stddev = "_stddev";
     const size_t name_sz =
         strlen(model_collection->name) + strlen(suffix_lo) + 1;
-    char name[name_sz];
+    char name[256];
     memset(name, 0, name_sz);
 
     snprintf(name, name_sz, "%s%s", model_collection->name, suffix_bagging);
